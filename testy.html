@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href ="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <p id ='about' class ="animated fadeIn">&emsp;&emsp; Mi<span id ="message">si</span>
+    </p>
+    <script>
+    const mHTML = document.getElementById('message'),
+    messages = [
+        'si',
+        'chelle Shie',
+    ];
+
+    let currentMessage = 0;
+    function typeMessage() {
+        if (!messages[currentMessage]) {
+            currentMessage = 0;
+        }
+        const currentStr = messages[currentMessage];
+        currentStr.split();
+        let part = '';
+        let currentLetter = 0;
+        let int1 = setInterval(()=>{
+        if (!currentStr[currentLetter]) {
+            currentMessage++;
+            setTimeout(()=>{
+                deleteMessage(part);
+            }, 2500);
+            clearInterval(int1);
+        } else {
+            part += currentStr[currentLetter++];
+            mHTML.innerHTML = part;
+        }
+    }, 200);
+}
+    function deleteMessage(str) {
+        let int = setInterval(()=>{
+        if (str.length === 0) {
+            setTimeout(()=>{
+                typeMessage();
+            }, 500);
+            clearInterval(int);
+        } else {
+            str = str.split('');
+            str.pop();
+            str = str.join('');
+            mHTML.innerHTML = str;
+        }
+    },100);
+}
+typeMessage();
+</script>
+
+    <div class = "container">
+        <section id = "main">
+            <img src = "images/transparentpic.png" style = "width:221.5px; height:332.25px">
+            <p>
+            <h4>Biodata</h4>
+            <table class = "tg">
+                <tr>
+                    <td class = "gfont"><b>NPM</td>
+                    <td class = "gfont">1906293165</td>
+                </tr>
+                <tr>
+                    <td class = "gfont"><b>Angkatan</td>
+                    <td class = "gfont">2019 ~ Maung</td>
+                </tr>
+                <tr>
+                    <td class = "gfont"><b>Deskripsi</td>
+                    <td class = "gfont">Optimis yes</td>
+                </tr>
+                <tr>
+                    <td class = "gfont"><b>Hobi</td>
+                    <td class = "gfont">Bernyanyi, dance, menggambar</td>
+                </tr>
+                <tr>
+                    <td class = "gfont" style = "vertical-align: top;"><b>Riwayat Pendidikan</td>
+                    <td class = "gfont"> - TK SUTOMO 1
+                        <br> - SD SUTOMO 1
+                        <br> - SMP SUTOMO 1
+                        <br> - SMA SUTOMO 1
+                    </td>
+                </tr>
+                <tr>
+                    <td class = "gfont"><b>Tempat Kuliah</td>
+                    <td class = "gfont">Universitas Indonesia</td>
+                </tr>
+            </table>
+            </p>
+        </section>
+
+</body>
+</html>
